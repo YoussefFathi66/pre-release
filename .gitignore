@@ -1,0 +1,225 @@
+flag = True
+count = 0
+count2 = 0
+feevalue = 75
+names1 = []
+names2 = []
+work1 = []
+work2 = []
+work3 = []
+isvolunteer = []
+years = []
+months = []
+days = []
+isfee = []
+spnames1 = []
+spnames2 = []
+while flag:
+    apply = input("Enter \"yes\" to become a member of Friends Of Seaview Pier and enter any other value to access other options: ")
+    if apply == "yes":
+        names1.extend(input("member\'s first name: "))
+        names2.extend(input("member\'s last name: "))
+        volunteer = input("Enter either a \"yes\" if you want to work as a volunteer or a \"no\" if you don\'t: ")
+        flag2 = True
+        while flag2 == True:
+            if volunteer == "yes":
+                isvolunteer.extend("yes")
+                flag3 = True
+                while flag3 == True:
+                    work = int(input("Enter \'1\' to work at the pier entrance gate\nEnter \'2\' to work in the gift shop\nEnter \'3\' to help with painting and decorating tasks\n Enter: "))
+                    if work == 1:
+                        work1.extend("yes")
+                        work2.extend("no")
+                        work3.extend("no")
+                        flag3 = False
+                    elif work == 2:
+                        work1.extend("no")
+                        work2.extend("yes")
+                        work3.extend("no")
+                        flag3 = False
+                    elif work == 3:
+                        work1.extend("no")
+                        work2.extend("no")
+                        work3.extend("yes")
+                        flag3 = False
+                    else:
+                        print("Please enter either \'1\', \'2\' or \'3\'")
+                flag2 = False
+
+            elif volunteer == "no":
+                isvolunteer.extend("no")
+                flag2 = False
+
+            else:
+                print("Please enter either a \'yes\' or \'no\'")
+                volunteer = input("Enter either a \"yes\" if you want to work as a volunteer or a \"no\" if you don\'t")
+
+        flag4 = False
+        while True:
+            print("Please enter today\'s date in numbers only: ")
+
+            while True:
+
+                try:
+                    year = int(input("Year: "))
+                    len(str(year)) == 4
+                    try:
+                        month = int(input("Month: "))
+                        len(str(month)) == 2 or len(str(month)) == 1
+                        try:
+                            day = int(input("Day: "))
+                            len(str(day)) == 2 or len(str(day)) == 1
+                            break
+                        except:
+                            print("Please enter a number for the day")
+                    except:
+                        print("Please enter a number for the month")
+                except:
+                    print("Please enter a number for the year")
+
+
+
+            if year >= 2022:
+                if month >= 1 and month <= 12:
+                    if day >= 1 and day<= 31:
+                        flag4 = True
+
+            if flag4 == False:
+                print("Please don\'t enter a value out of range for the date")
+
+            if flag4 == True:
+                years.extend(str(year))
+                months.extend(str(month))
+                days.extend(str(day))
+                break
+
+
+
+
+        while True:
+            print("Enter either a \'yes\' if you have paid $", feevalue, " fee or \'no\' if you didn\'t: ")
+            fee = input()
+            if fee == "yes":
+                isfee.extend("yes")
+                break
+            elif fee == "no":
+                isfee.extend("no")
+                break
+            else:
+                print("Enter a valid input please")
+
+        count += 1
+    else:
+        while True:
+            print("Enter \'1\' for printing names of members who have chosen to work as volunteers\n"
+                  "Enter \'2\' for printing names of volunteers who\'s working at the entrance gate\n"
+                  "Enter \'3\' for printing names of gift shop workers\n"
+                  "Enter \'4\' for printing names of painting and decorating helpers\n"
+                  "Enter \'5\' for printing names of members with expired membership\n"
+                  "Enter \'6\' for printing names of members who haven\'t payed their $", feevalue, " fee\n"
+                  "Enter \'7\' for being a sponsorship \n"
+                  "Enter \'8\' if you don\'t want any of the above")
+            value = int(input("value: "))
+
+            if value == 1:
+                print("Names of members who have chosen to work as volunteers: ")
+                for i in range(0, count):
+                    if isvolunteer[i] == "yes":
+                        print(names1[i], names2[i])
+                break
+
+            elif value == 2:
+                print("Names of volunteers who\'s working at the entrance gate: ")
+                for i in range(0, count):
+                    if work1[i] == "yes":
+                        print(names1[i], names2[i])
+                break
+
+
+            elif value == 3:
+                print("Names of gift shop workers: ")
+                for i in range(0, count):
+                    if work2[i] == "yes":
+                        print(names1[i], names2[i])
+                break
+
+            elif value == 4:
+                print("Names of painting and decorating helpers: ")
+                for i in range(0, count):
+                    if work3[i] == "yes":
+                        print(names1[i], names2[i])
+                break
+
+
+            elif value == 5:
+                todayyear = input("Please enter today\'s year: ")
+                todaymonth = input("Please enter today\'s month")
+                todayday = input("Please enter today\'s day")
+
+                while True:
+                    if todayyear != int:
+                        print("Please enter a numeric value for the year: ")
+                        todayyear = input()
+
+                    if todaymonth != int:
+                        print("Please enter a numeric value for the month: ")
+                        todaymonth = input()
+
+                    if todayday != int:
+                        print("Please enter a numeric value for the day: ")
+                        todayday = input()
+
+                    if len(str(todayyear)) != 4:
+                        print("Please enter a valid value for the year: ")
+                        todayyear = input()
+
+                    if len(str(todaymonth)) != 2:
+                        if len(str(todaymonth)) != 1:
+                            print("Please enter a valid value for the month: ")
+                            todaymonth = input()
+
+                    if len(str(todayday)) != 2:
+                        if len(str(todayday)) != 1:
+                            print("Please enter a valid value for the day: ")
+                            todayday = input()
+
+                    else:
+                        break
+
+
+
+                print("Names of members with expired membership: ")
+                for i in range(0, count):
+                    if todayyear >= year[i] and todaymonth >= month[i] and todayday > day[i]:
+                        print(names1[i], names2[i])
+                break
+
+
+            elif value == 6:
+                print("Names of members who haven\'t payed their $", feevalue, " fee: ")
+                for i in range(0, count):
+                    if isfee[i] == "yes":
+                        print(names1[i], names2[i])
+
+                break
+
+            elif value == 7:
+                while True:
+                    print("sponsorships details: ")
+                    sponsorname1 = input("Please enter your first name: ")
+                    sponsorname2 = input("Please enter your last name: ")
+                    message =  input("Type a short message to be written on the brass plaque: ")
+
+                    print("sponsorship\'s name: ", sponsorname1, sponsorname2, "\n"
+                          "short message: ", message)
+                    confirmation = input("Please type \'confirm\' if data is correct, type anything else if you want to re-enter the data: ")
+                    if confirmation == "confirm":
+                        break
+                count2 += 1
+                break
+
+            elif value == 8:
+                break
+
+            else:
+                print("Please enter either 1, 2, 3, 4, 5, 6, 7, 8")
